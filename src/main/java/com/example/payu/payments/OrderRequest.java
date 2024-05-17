@@ -29,7 +29,7 @@ public class OrderRequest {
 
     public static OrderRequest build(String customerIp, ApplicationConfig config, Checkout checkout) {
         OrderRequest newRequest = new OrderRequest();
-        newRequest.notifyUrl = config.getBaseUrl() + "/notify";
+        newRequest.notifyUrl = config.getBaseUrl() + "/notify?secret=" + config.getPayU().getNotificationSecret();
         newRequest.continueUrl = config.getBaseUrl() + "/thank-you";
         newRequest.customerIp = customerIp;
         newRequest.merchantPosId = config.getPayU().getPosId();
