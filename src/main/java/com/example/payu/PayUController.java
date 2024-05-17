@@ -51,7 +51,7 @@ public class PayUController {
     }
 
     @PostMapping("/notify")
-    public ResponseEntity nofity(@RequestParam("secret") String secret, @RequestBody PayUNotification notification) throws JsonProcessingException {
+    public ResponseEntity nofity(@RequestParam(value = "secret", required = false) String secret, @RequestBody PayUNotification notification) throws JsonProcessingException {
         if(!applicationConfig.getPayU().getNotificationSecret().equals(secret)) {
             return ResponseEntity.notFound().build();
         }
